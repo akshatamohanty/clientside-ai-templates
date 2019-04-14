@@ -9,10 +9,6 @@ body {
     padding: 100px 0;
 }
 
-img {
-    margin: 0 auto;
-}
-
 button {
     display: block;
     background: white;
@@ -45,4 +41,14 @@ button {
 
 .hide {
     display: none;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#webcam {
+    border: 1px solid #222;
 }

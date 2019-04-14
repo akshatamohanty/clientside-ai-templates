@@ -16,8 +16,12 @@
         <div id='loader'>Loading models ... </div>
         <div id='container'>
             <!-- Add an image that we will use to test -->
-            <img id="img" src="./sample_images/image_1.jpg" width=227 height=227/>
-            <button onclick='predict_breed()'>Predict</button>
+            <div class='inputs'>
+                <img id="img" src="./sample_images/image_1.jpg" width=224 height=244/>
+                <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+            </div>
+            <button onclick='predict_breed_from_image()'>Predict Image</button>
+            <button onclick='predict_breed_from_cam()'>Predict from WebCam</button>
             <div id="console">__</div>
         </div>
 

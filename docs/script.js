@@ -49,8 +49,7 @@ async function extract_bottleneck(imageEl) {
 }
 
 
-async function predict_breed() {
-    let imageEl = document.getElementById('img')
+async function predict_breed(imageEl) {
     const tensor = path_to_tensor(imageEl)
     const processed_tensor = await preprocess_input(tensor)
     const bottleneck_feature = base_resnet_model.predict(processed_tensor)
@@ -61,6 +60,34 @@ async function predict_breed() {
     const dog_breed = dog_names[ dogIndex ]
     console.log(dog_breed, dogIndex)
     document.getElementById('console').innerText = dog_breed 
+}
+
+async function predict_breed_from_image() {
+    predict_breed(document.getElementById('img'))
+}
+
+async function predict_breed_from_cam() {
+    predict_breed(webcamElement)
+}
+
+const webcamElement = document.getElementById('webcam');
+async function setupWebcam() {
+    return new Promise((resolve, reject) => {
+        const navigatorAny = navigator;
+        navigator.getUserMedia = navigator.getUserMedia ||
+            navigatorAny.webkitGetUserMedia || navigatorAny.mozGetUserMedia ||
+            navigatorAny.msGetUserMedia;
+        if (navigator.getUserMedia) {
+        navigator.getUserMedia({video: true},
+            stream => {
+            webcamElement.srcObject = stream;
+            webcamElement.addEventListener('loadeddata',  () => resolve(), false);
+            },
+            error => reject());
+        } else {
+        reject();
+        }
+    });
 }
 
 // bootstrap the app
@@ -79,6 +106,8 @@ async function app() {
 
     document.getElementById('container').className = 'show'
     document.getElementById('loader').className = 'hide'
+
+    setupWebcam();
 }
 
 app()
