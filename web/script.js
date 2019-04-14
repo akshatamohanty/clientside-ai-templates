@@ -69,7 +69,8 @@ async function predict_breed() {
 
     // print_prediction(predicted_vector) 
     console.log(dog_names[ argmax(await predicted_vector.data()) ])
-    return dog_names[ argmax(await predicted_vector.data()) ]
+    const dog_breed = dog_names[ argmax(await predicted_vector.data()) ]
+    document.getElementById('console').innerText = dog_breed 
 }
 
 // bootstrap the app
@@ -85,6 +86,9 @@ async function app() {
     // Load the model.
     extra_layers_model = await tf.loadLayersModel('./extra_layers/model.json');
     console.log('Sucessfully loaded extra layers model');
+
+    document.getElementById('container').className = 'show'
+    document.getElementById('loader').className = 'hide'
 }
 
 app()
