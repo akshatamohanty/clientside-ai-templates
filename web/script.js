@@ -2,7 +2,7 @@ let net;
 
 async function app() {
   // Load the base resnet model.
-  const base_resnet_model = await tf.loadLayersModel('./base_resnet/model.json', strict=false);
+  const base_resnet_model = await tf.loadModel('./base_resnet/model.json', strict=false);
   console.log('Sucessfully loaded baseresnet model');
 
   // Load the model.
