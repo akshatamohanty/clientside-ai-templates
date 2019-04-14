@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Client-side AIML Demonstration</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles.css">
+        <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+        <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+    </head>
+    <body>
+        <h1>Dog Breed Classifier</h1>
+        <hr />
+        <br/>
+        <div id='loader'>Loading models ... </div>
+        <div id='container'>
+            <!-- Add an image that we will use to test -->
+            <img id="img" src="../sample_images/image_1.jpg" width=227 height=227/>
+            <button onclick='predict_breed()'>Predict</button>
+            <div id="console">__</div>
+        </div>
+
+        <script src="./script.js" async defer></script>
+    </body>
+</html>
