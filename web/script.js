@@ -14,6 +14,11 @@ function path_to_tensor(imageEl){
 }
 
 // Source: https://gogul09.github.io/software/mobile-net-tensorflow-js
+// Getting the 4D tensor ready for ResNet-50, and for any other pre-trained model in Keras, requires some additional processing. First, the RGB image is converted to BGR by reordering the channels. All pre-trained models have the additional normalization step that the mean pixel (expressed in RGB as $[103.939, 116.779, 123.68]$ and calculated from all pixels in all images in ImageNet) must be subtracted from every pixel in each image. This is implemented in the imported function preprocess_input. If you're curious, you can check the code for preprocess_input here.
+
+// Now that we have a way to format our image for supplying to ResNet-50, we are now ready to use the model to extract the predictions. This is accomplished with the predict method, which returns an array whose $i$-th entry is the model's predicted probability that the image belongs to the $i$-th ImageNet category. This is implemented in the ResNet50_predict_labels function below.
+
+// By taking the argmax of the predicted probability vector, we obtain an integer corresponding to the model's predicted object class, which we can identify with an object category through the use of this dictionary.
 async function preprocess_input(tensor, modelName) {
   // if model is not available, send the tensor with expanded dimensions
 //   if (modelName === undefined) {
@@ -62,24 +67,8 @@ async function predict_breed(imageEl) {
     const predicted_vector = extra_layers_model.predict(bottleneck_feature)
 
     // print_prediction(predicted_vector) 
+    console.log(dog_names[ argmax(await predicted_vector.data()) ])
     return dog_names[ argmax(await predicted_vector.data()) ]
-}
-
-function print_prediction(predictions) {
-    // get the model's prediction results
-    // let results = Array.from(predictions)
-    //         .map(function (p, i) {
-    //             return {
-    //                 probability: p,
-    //                 className: IMAGENET_CLASSES[i]
-    //             };
-    //         }).sort(function (a, b) {
-    //             return b.probability - a.probability;
-    //         }).slice(0, 5);
-
-    // display the top-1 prediction of the model
-    document.getElementById("results-box").style.display = "block";
-    document.getElementById("prediction").innerHTML = "MobileNet prediction - <b>" + results[0].className + "</b>";
 }
 
 // bootstrap the app
