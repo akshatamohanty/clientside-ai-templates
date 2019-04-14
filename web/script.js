@@ -1,4 +1,4 @@
-const dog_names = []
+let dog_names = []
 let base_resnet_model
 let extra_layers_model
 
@@ -37,7 +37,7 @@ async function preprocess_input(tensor, modelName) {
 // return indice of max value in list
 // Source: https://gist.github.com/engelen/fbce4476c9e68c52ff7e5c2da5c24a28
 function argmax(array) {
-    let max = arr[0]
+    let max = array[0]
     let index = 0
     let count = 0
 
@@ -60,7 +60,8 @@ async function extract_bottleneck(imageEl) {
 }
 
 
-async function predict_breed(imageEl) {
+async function predict_breed() {
+    let imageEl = document.getElementById('img')
     const tensor = path_to_tensor(imageEl)
     const processed_tensor = await preprocess_input(tensor)
     const bottleneck_feature = base_resnet_model.predict(processed_tensor)
@@ -73,6 +74,10 @@ async function predict_breed(imageEl) {
 
 // bootstrap the app
 async function app() {
+    fetch("./dog_names.json")
+        .then(response => response.json())
+        .then(json => dog_names = json);
+
     // Load the base resnet model.
     base_resnet_model = await tf.loadLayersModel('./base_resnet/model.json', { strict: false } );
     console.log('Sucessfully loaded baseresnet model');
