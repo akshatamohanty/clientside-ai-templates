@@ -1,5 +1,6 @@
 <!DOCTYPE html>
     <head>
+        <base href='https://akshata.dev/client-ai-template/' />
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Client-side AIML Demonstration</title>
@@ -18,7 +19,7 @@
         <div id='container'>
             <!-- Add an image that we will use to test -->
             <div class='inputs'>
-                <img id="img" src="./sample_images/image_4.jpg" width=224 height=244/>
+                <img id="img" src="./sample_images/pomeranian.jpeg" width=224 height=244/>
                 <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
             </div>
             <button onclick='predict_breed_from_image()'>Predict Image</button>
