@@ -20,6 +20,7 @@ async function preprocess_input(tensor, modelName) {
     let offset = tf.tensor1d([103.939, 116.779, 123.68]);
     return tensor
       .sub(offset)
+      .reverse(-1)
       .expandDims();
 }
 
@@ -97,11 +98,11 @@ async function app() {
         .then(json => dog_names = json);
 
     // Load the base resnet model.
-    base_resnet_model = await tf.loadModel('./base_resnet/model.json', { strict: false } );
+    base_resnet_model = await tf.loadLayersModel('./base_resnet/model.json');
     console.log('Sucessfully loaded baseresnet model');
 
     // Load the model.
-    extra_layers_model = await tf.loadModel('./extra_layers/model.json');
+    extra_layers_model = await tf.loadLayersModel('./extra_layers/model.json');
     console.log('Sucessfully loaded extra layers model');
 
     document.getElementById('container').className = 'show'

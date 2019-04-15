@@ -6,8 +6,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./styles.css">
-        <!-- <script src="https://unpkg.com/@tensorflow/tfjs"></script> -->
-        <script src='https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js'></script>
+        <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+        <!-- <script src='https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js'></script> -->
         <!-- <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script> -->
     </head>
     <body>
@@ -18,7 +18,7 @@
         <div id='container'>
             <!-- Add an image that we will use to test -->
             <div class='inputs'>
-                <img id="img" src="./sample_images/image_1.jpg" width=224 height=244/>
+                <img id="img" src="./sample_images/image_4.jpg" width=224 height=244/>
                 <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
             </div>
             <button onclick='predict_breed_from_image()'>Predict Image</button>
