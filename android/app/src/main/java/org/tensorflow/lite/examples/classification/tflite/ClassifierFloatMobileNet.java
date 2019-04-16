@@ -52,12 +52,12 @@ public class ClassifierFloatMobileNet extends Classifier {
     // you can download this file from
     // see build.gradle for where to obtain this file. It should be auto
     // downloaded into assets.
-    return "model_from_scratch.tflite"; // "mobilenet_v1_1.0_224.tflite";
+    return "dog_biclassifier_mobilenet.tflite"; // "mobilenet_v1_1.0_224.tflite";
   }
 
   @Override
   protected String getLabelPath() {
-    return "dog_names.txt";
+    return "dog_biclass.txt";
   }
 
   @Override
