@@ -19,14 +19,6 @@ const instructions = Platform.select({
 type Props = {};
 export default class App extends Component<Props> {
 
-  constructor(){
-    super()
-    const tfImageRecognition = new tfImageRecognition({
-      model: 'file://base_resnet_model.pb',
-      labels: 'file://dog_images.txt',
-    });
-  }
-
   render() {
     return (
       <View style={styles.container}>
