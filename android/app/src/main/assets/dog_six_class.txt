@@ -1,0 +1,6 @@
+American_eskimo_dog
+Bloodhound
+Chihuahua
+Old_english_sheepdog
+Pomeranian
+Poodle
