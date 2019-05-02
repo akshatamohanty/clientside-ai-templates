@@ -59,3 +59,9 @@ Also, the model needs a defined `input_shape` and cannot have something like `[N
 ## TODO: 
 - react-native-template
 - iOS-template-with-CoreML
+
+
+
+## Talk - AI for Non-PhDs @ Junior Dev SG
+
+[![](http://img.youtube.com/vi/1gEaPTeuBmE/0.jpg)](http://www.youtube.com/watch?v=1gEaPTeuBmE "AI for Non-PhDs")
